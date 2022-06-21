@@ -11,7 +11,7 @@ import {
     Title,
 } from "chart.js";
 import { Scatter } from "react-chartjs-2";
-import rawData from "./data.json";
+import { DataSet } from "./App";
 
 Chart.register(
     LinearScale,
@@ -25,7 +25,7 @@ Chart.register(
 
 const palette = ["#9FC088", "#E8C07D", "#CC704B", "#614124"];
 
-export const TheChart = () => {
+export const TheChart = ({ dataset, filter }: { dataset: DataSet, filter: string}) => {
     const data: ChartData<"scatter"> = {
         datasets: [
             {
@@ -34,7 +34,7 @@ export const TheChart = () => {
                 borderColor: palette[0],
                 pointRadius: 4,
                 pointHitRadius: 15,
-                data: rawData.map((entry) => ({
+                data: dataset.data.map((entry) => ({
                     y: entry.ClassAgeFrom,
                     x: entry.NetTime / 60_000,
                     name: entry.NameFormatted,
@@ -45,9 +45,9 @@ export const TheChart = () => {
                 borderColor: palette[1],
                 pointRadius: 10,
                 pointHitRadius: 15,
-                label: "Jonas",
-                data: rawData
-                    .filter((entry) => entry.NameFormatted.includes("Jonas"))
+                label: filter,
+                data: dataset.data
+                    .filter((entry) => entry.NameFormatted.includes(filter))
                     .map((entry) => ({
                         y: entry.ClassAgeFrom,
                         x: entry.NetTime / 60_000,
