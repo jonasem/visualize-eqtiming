@@ -23,27 +23,16 @@ Chart.register(
     Tooltip
 );
 
-const palette = ["#9FC088", "#E8C07D", "#CC704B", "#614124"];
+const palette = ["#9FC088", "#5F9048", "#CC704B", "#614124"];
 
 export const TheChart = ({ dataset, filter }: { dataset: DataSet, filter: string}) => {
     const data: ChartData<"scatter"> = {
         datasets: [
             {
-                label: "Alle utøvere",
-                backgroundColor: palette[0],
-                borderColor: palette[0],
-                pointRadius: 4,
-                pointHitRadius: 15,
-                data: dataset.data.map((entry) => ({
-                    y: entry.ClassAgeFrom,
-                    x: entry.NetTime / 60_000,
-                    name: entry.NameFormatted,
-                })),
-            },
-            {
                 backgroundColor: palette[1],
                 borderColor: palette[1],
-                pointRadius: 10,
+                pointRadius: 9,
+                pointHoverRadius: 15,
                 pointHitRadius: 15,
                 label: filter,
                 data: dataset.data
@@ -54,6 +43,19 @@ export const TheChart = ({ dataset, filter }: { dataset: DataSet, filter: string
                         name: entry.NameFormatted,
                     })),
             },
+            {
+                label: "Alle utøvere",
+                backgroundColor: palette[0] + "66",
+                // borderColor: palette[0],
+                pointRadius: 6,
+                pointHitRadius: 15,
+                data: dataset.data.map((entry) => ({
+                    y: entry.ClassAgeFrom,
+                    x: entry.NetTime / 60_000,
+                    name: entry.NameFormatted,
+                })),
+            },
+            
         ],
     };
 

@@ -32,18 +32,19 @@ const dataSets = [
 
 function App() {
   const [dataset, setDataset] = useState(dataSets[0]);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState('Jonas');
 
   return <>
     <strong>Chart</strong>
     <TheChart dataset={dataset} filter={filter} />
     <div>
         {dataSets.map(dataset => (
-          <button onClick={() => setDataset(dataset)}>{dataset.title}</button>
+          <button key={dataset.title} onClick={() => setDataset(dataset)}>{dataset.title}</button>
         ))}
     </div>
     <div>
-        <input onChange={(event) => setFilter(event.target.value)} />
+        <label htmlFor='filter'>Filtrer:</label>
+        <input id="filter" type="text" value={filter} onChange={(event) => setFilter(event.target.value)} />
     </div>
   </>
 }
