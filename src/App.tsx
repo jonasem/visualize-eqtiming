@@ -10,12 +10,14 @@ import strandlinjen16juni from './data/strandlinjen-16-juni.json';
 
 import { useState } from 'react';
 
+export type Gender = string; // 'M'|''|'F';
 export interface DataSet {
   title: string,
   data: {
     ClassAgeFrom: number;
     NetTime: number;
     NameFormatted: string;
+    Gender: Gender;
   }[]
 }
 
@@ -33,10 +35,11 @@ const dataSets = [
 function App() {
   const [dataset, setDataset] = useState(dataSets[0]);
   const [filter, setFilter] = useState('Jonas');
+  const [gender, setGender] = useState<Gender>('B');
 
   return <>
     <strong>Chart</strong>
-    <TheChart dataset={dataset} filter={filter} />
+    <TheChart dataset={dataset} filter={filter} gender={gender} />
     <div>
         {dataSets.map(dataset => (
           <button key={dataset.title} onClick={() => setDataset(dataset)}>{dataset.title}</button>
@@ -45,6 +48,20 @@ function App() {
     <div>
         <label htmlFor='filter'>Filtrer:</label>
         <input id="filter" type="text" value={filter} onChange={(event) => setFilter(event.target.value)} />
+        
+        <div onChange={evt => setGender((evt.target as any).value) }> 
+           <label htmlFor="theme-auto">
+              <input type="radio" value="B" name="gender" />
+              Begge
+           </label>
+           <label htmlFor="theme-dark">
+            <input type="radio" value="M" name="gender"/> 
+            Herrer</label> 
+             <label htmlFor="theme-light">
+           <input type="radio" value="F" name="gender" />
+              Kvinner</label> 
+          </div>
+
     </div>
   </>
 }
