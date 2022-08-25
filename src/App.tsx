@@ -32,7 +32,7 @@ const dataSets = [
   { title: 'Nilsbyen 9 juni', data: nilsbyen9juni, },
   { title: 'Strandlinjen 16 juni', data: strandlinjen16juni, },
   { title: 'Strandlinjen 18 august', data: strandlinjen18august, },
-  { title: 'Strandlinjen 18 august', data: lian25august, },
+  { title: 'Lian 18 august', data: lian25august, },
 ];
 
 
