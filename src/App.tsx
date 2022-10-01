@@ -9,6 +9,8 @@ import nilsbyen9juni from './data/nilsbyen-9-juni.json';
 import strandlinjen16juni from './data/strandlinjen-16-juni.json';
 import strandlinjen18august from './data/strandlinjen-18-august.json';
 import lian25august from './data/lian-25-august.json';
+import skogsmaraton2022 from './data/skogsmaraton2022.json';
+
 
 import { useState } from 'react';
 
@@ -33,6 +35,7 @@ const dataSets = [
   { title: 'Strandlinjen 16 juni', data: strandlinjen16juni, },
   { title: 'Strandlinjen 18 august', data: strandlinjen18august, },
   { title: 'Lian 18 august', data: lian25august, },
+  { title: 'Skogsmaraton 2022', data: skogsmaraton2022, },
 ];
 
 
